@@ -14,11 +14,12 @@
 
 		<ul>
 			<li v-for="video in videodata">
-				<button class="more-details">more details...</button>
-				<a :href="video.path">
+				<button :data-movie="video.id" v-on:click="fetchmore" class="more-details">more details...</button>
+				<!--when using database after . should match column-->
+				<a :href="video.path" v-on:click="loadmovie">
 					<img :src="'images/'+ video.vidthumb" alt="">
 				</a>
-				<p>put genre data here</p>
+				<p>put genre data here</p> <!--add field to db (or make subquery) to populate with data-->
 			</li>
 		</ul>
 
@@ -27,14 +28,18 @@
 			<i>Click on a poster to preview the movie!</i>
 		</p>
 
-
-		<section class="hidden-movies">
-			<h3 class="movie-title"></h3>
-			<video src=""></video>
+		<!--add class show-movie only if showDetails = true-->
+		<section class="hidden-movies" :class="{'show-movie' : showDetails}">
+			<h3 class="movie-title">{{ video.videotitle }}</h3>
+			<video :src="'video/' + videosource"></video>
 			<div class="movie-details">
-				<p></p>
+				<p>{{video.videodesc}}</p>
 			</div>
 		</section>
+
+		<div class="up-arrow">
+			<span v-on:click="scrollBackup" :class="{'show-scroller' : showDetails}"></span>
+		</div>
 
 	</main>
 	
