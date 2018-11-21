@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<title>movies</title>
+</head>
+<body>
+
+	<main id="app">
+		
+		<h4 class="welcome-message">{{mainmessage}}</h4>
+
+		<ul>
+			<li v-for="video in videodata">
+				<button class="more-details">more details...</button>
+				<a :href="video.path">
+					<img :src="'images/'+ video.vidthumb" alt="">
+				</a>
+				<p>put genre data here</p>
+			</li>
+		</ul>
+
+
+		<p class="instructions">
+			<i>Click on a poster to preview the movie!</i>
+		</p>
+
+
+		<section class="hidden-movies">
+			<h3 class="movie-title"></h3>
+			<video src=""></video>
+			<div class="movie-details">
+				<p></p>
+			</div>
+		</section>
+
+	</main>
+	
+	<script src="js/main.js"></script>
+</body>
+</html>
